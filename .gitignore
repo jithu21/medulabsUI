@@ -1,0 +1,7 @@
+.bowerrc
+.editorconfig
+.eslintignore
+.eslintrc
+.yo-rc.json
+node_modules/
+bower_components/
