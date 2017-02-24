@@ -1,0 +1,224 @@
+<div id="simple-table" class="page-layout simple fullwidth doc-page element-doc-page">
+
+     <div class="content">
+       <div class="white-bg md-whiteframe-4dp">
+       <ms-form-wizard flex>
+         <md-tabs md-dynamic-height md-selected="msWizard.selectedIndex" md-center-tabs="true">
+           <md-tab>
+             <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep1.$invalid">1</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep1.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">HOSPITAL INFORMATION</span>
+                            </span>
+             </md-tab-label>
+
+             <md-tab-body>
+               <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
+                 <div layout="column" layout-gt-xs="row" flex>
+                   <md-input-container flex="100" flex-gt-xs="50">
+                     <input type="text" name="doctorName" ng-model="vm.formWizard.doctorName"
+                            placeholder="Doctor Name"
+                            required>
+                     <div ng-messages="wizardStep1.doctorName.$error"
+                          ng-show="wizardStep1.doctorName.$touched"
+                          role="alert">
+                       <div ng-message="required">
+                         <span>Doctor Name field is required.</span>
+                       </div>
+                     </div>
+                   </md-input-container>
+
+                   <md-input-container flex="100" flex-gt-xs="50">
+                     <input type="text" name="lastname" ng-model="vm.formWizard.hospitalName"
+                            placeholder="Hospital Name"
+                            required>
+                     <div ng-messages="wizardStep1.hospitalName.$error"
+                          ng-show="wizardStep1.hospitalName.$touched"
+                          role="alert">
+                       <div ng-message="required">
+                         <span>Hospital Name field is required.</span>
+                       </div>
+                     </div>
+                   </md-input-container>
+                 </div>
+               </form>
+             </md-tab-body>
+           </md-tab>
+
+           <md-tab ng-disabled="wizardStep1.$invalid">
+             <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep2.$invalid">2</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep2.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">Address</span>
+                            </span>
+             </md-tab-label>
+
+             <md-tab-body>
+               <form name="wizardStep2" ms-form-wizard-form novalidate>
+                 <div layout="column" layout-gt-xs="row">
+                   <md-input-container flex>
+                     <label>City</label>
+                     <input type="text" name="city" ng-model="vm.formWizard.city">
+                   </md-input-container>
+
+                   <md-input-container flex>
+                     <label>State</label>
+                     <md-select ng-model="vm.formWizard.state">
+                       <md-option ng-repeat="state in vm.states" value="{{state}}">
+                         {{state}}
+                       </md-option>
+                     </md-select>
+                   </md-input-container>
+
+                   <md-input-container flex>
+                     <label>Postal Code</label>
+                     <input name="postalcode" ng-model="vm.formWizard.postalCode" placeholder="12345"
+                            required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                     <div ng-messages="wizardStep2.postalcode.$error"
+                          ng-show="wizardStep2.postalcode.$touched"
+                          role="alert" multiple>
+                       <div ng-message="required"><span>You must supply a postal code.</span></div>
+                       <div ng-message="pattern">
+                         <span>That doesn't look like a valid postal code.</span></div>
+                       <div ng-message="md-maxlength">
+                         <span>Postal code can't be longer than 5 characters.</span>
+                       </div>
+                     </div>
+                   </md-input-container>
+                 </div>
+
+                 <md-input-container class="md-block">
+                   <label>Address</label>
+                   <textarea ng-model="vm.formWizard.address" columns="1" md-maxlength="150"
+                             rows="5" required></textarea>
+                   <div ng-messages="wizardStep2.address.$error"
+                        ng-show="wizardStep2.address.$touched"
+                        role="alert" multiple>
+                     <div ng-message="required"><span>Address field is required.</span></div>
+                     <div ng-message="md-maxlength">
+                       <span>Address can't be longer than 150 characters.</span>
+                     </div>
+                   </div>
+                 </md-input-container>
+               </form>
+             </md-tab-body>
+           </md-tab>
+
+           <md-tab ng-disabled="wizardStep1.$invalid || wizardStep2.$invalid">
+             <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep3.$invalid">3</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep3.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">PRESCRIPTION</span>
+                            </span>
+             </md-tab-label>
+             <md-tab-body>
+               <form name="wizardStep3" ms-form-wizard-form novalidate>
+                 <div layout="column"  layout-gt-xs="row">
+                 <md-input-container flex>
+                   <label> Date of Visit </label>
+                   <md-datepicker ng-model="vm.formWizard.dateOfVisit"></md-datepicker>
+
+                   <div ng-messages="wizardStep3.dateOfVisit.$error"
+                        ng-show="wizardStep3.dateOfVisit.$dirty"
+                        role="alert">
+                     <div ng-message="required">
+                       <span>Date of Visit field is required.</span>
+                     </div>
+                   </div>
+                 </md-input-container>
+                 </div>
+                 <div layout="row">
+                   <ms-form-wizard flex>
+                     <label> Load all the documents related to your visit  </label>
+                     <lf-ng-md-file-input lf-files="files05" lf-browse-label="Search" lf-remove-label="Delete" multiple lf-drag-and-drop-label="Drag and Drop here!" drag preview></lf-ng-md-file-input>
+                   </ms-form-wizard>
+                 </div>
+
+                 <!--<div layout="column" layout-gt-xs="row">-->
+
+                      <!--<label for="input-file-id" class="md-button md-raised md-primary">Upload</label>-->
+                      <!--<input class="ng-hide" id="input-file-id" multiple type="file" />-->
+                      <!--<label> Load all the documents related to your visit  </label>-->
+                 <!--</div>-->
+
+               </form>
+             </md-tab-body>
+           </md-tab>
+         </md-tabs>
+
+         <div class="navigation" flex layout="row" layout-align="center center">
+           <md-button class="md-raised md-accent" ng-click="msWizard.previousStep()"
+                      ng-disabled="msWizard.isFirstStep()">
+             Previous
+           </md-button>
+           <div class="steps">
+                        <span ng-repeat="form in msWizard.forms"
+                              ng-class="{'selected md-accent-bg':msWizard.selectedIndex === $index}"></span>
+           </div>
+           <md-button class="md-raised md-accent" ng-click="msWizard.nextStep()"
+                      ng-hide="msWizard.isLastStep()"
+                      ng-disabled="msWizard.currentStepInvalid()">
+             Next
+           </md-button>
+           <md-button class="md-raised md-warn" ng-click="vm.sendForm(); msWizard.resetForm();" ng-show="msWizard.isLastStep()"
+                      ng-disabled="msWizard.formsIncomplete()">
+             Save
+           </md-button>
+         </div>
+
+       </ms-form-wizard>
+       </div>
+
+      <div class="white-bg md-whiteframe-4dp">
+        <table class="dataTable row-border hover" datatable="ng" dt-options="vm.dtOptions">
+          <thead>
+          <tr>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Hospital Name</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Doctor Name</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Sickness</span>
+              </div>
+            </th>
+            <th class="secondary-text">
+              <div class="table-header">
+                <span class="column-title">Date of Visit</span>
+              </div>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="prescription in ::vm.prescriptions">
+            <td>{{ prescription.hospitalName }}</td>
+            <td>{{ prescription.doctorName }}</td>
+            <td>{{ prescription.sicknessReason }}</td>
+            <td>{{ prescription.visitDate }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

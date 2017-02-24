@@ -1,0 +1,169 @@
+<div class="page-layout simple fullwidth doc-page element-doc-page">
+
+    <!-- CONTENT -->
+
+    <div class="content layout-wrap">
+      <!-- FORM WIZARD -->
+      <div layout="row">
+      <ms-form-wizard flex>
+        <md-tabs md-dynamic-height md-selected="msWizard.selectedIndex" md-center-tabs="true">
+          <md-tab>
+            <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep1.$invalid">1</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep1.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">Campaign Details</span>
+                            </span>
+            </md-tab-label>
+
+            <md-tab-body>
+              <form name="wizardStep1" class="md-inline-form" ms-form-wizard-form novalidate>
+                <div layout="column" layout-gt-xs="row" flex>
+                  <md-input-container flex="100" flex-gt-xs="30">
+                    <input type="text" name="compaignName" ng-model="vm.formWizard.compaignName"
+                           placeholder="compaignName" md-maxlength="150"
+                           required>
+                    <div ng-messages="wizardStep3.compaignName.$error"
+                         ng-show="wizardStep3.compaignName.$dirty"
+                         role="alert" multipl>
+                      <div ng-message="required">
+                        <span>Name is Required </span>
+                      </div>
+                    </div>
+                  </md-input-container>
+                  <md-input-container flex="100" flex-gt-xs="30">
+                    <md-select placeholder="Campaign Category" ng-model="user" ng-click="vm.loadUsers($event)" style="min-width: 150px;">
+                    <md-option ng-value="user" ng-repeat="user in vm.users">{{user.name}}</md-option>
+                    </md-select>
+                    <p class="md-caption">Selected compaign category : {{ user ? user.name : 'No Compaign Selected' }}</p>
+                  </md-input-container>
+
+                  <md-input-container flex="100" flex-gt-xs="30">
+                    <md-select placeholder="Compaign Variety" ng-model="varity" ng-click="vm.fetchVarirties(user)" style="min-width: 180px;">
+                      <md-option ng-value="varity" ng-repeat="varity in vm.varityItems">{{varity.variety_name}}</md-option>
+                      </md-select>
+                      <p class="md-caption">Variety Selected : {{ varity ? varity.variety_name : 'No Category Selected' }}</p>
+                  </md-input-container>
+                </div>
+              </form>
+            </md-tab-body>
+          </md-tab>
+
+          <md-tab ng-disabled="wizardStep1.$invalid">
+            <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep2.$invalid">2</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep2.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">TARGET GEOGRAPHY</span>
+                            </span>
+            </md-tab-label>
+
+            <md-tab-body>
+              <form name="wizardStep2" ms-form-wizard-form novalidate>
+                <div layout="column" layout-gt-xs="row">
+                  <md-input-container flex>
+                    <label>City</label>
+                    <input type="text" name="city" ng-model="vm.formWizard.city">
+                  </md-input-container>
+
+                  <md-input-container flex>
+                    <label>State</label>
+                    <md-select placeholder="Target Audience Region" ng-model="country" ng-click="vm.listCountries($event)" style="min-width: 200px;">
+                      <md-option ng-value="country" ng-repeat="country in vm.countries">{{country.name}}</md-option>
+                    </md-select>
+                  </md-input-container>
+
+                </div>
+
+                <md-input-container class="md-block">
+                  <label>Offer Code</label>
+                                    <textarea ng-model="vm.formWizard.address" columns="1" md-maxlength="150"
+                                              rows="5" required></textarea>
+                  <div ng-messages="wizardStep2.address.$error"
+                       ng-show="wizardStep2.address.$touched"
+                       role="alert" multiple>
+                    <div ng-message="required"><span>Offer Code.</span></div>
+                  </div>
+                </md-input-container>
+              </form>
+            </md-tab-body>
+            </md-tab>
+
+          <md-tab ng-disabled="wizardStep1.$invalid || wizardStep2.$invalid">
+            <md-tab-label>
+                            <span class="ms-form-wizard-step-label">
+                                <span class="ms-form-wizard-step-number md-accent-bg"
+                                      ng-if="wizardStep3.$invalid">3</span>
+                                <span class="ms-form-wizard-step-number md-accent-bg" ng-if="wizardStep3.$valid">
+                                    <i class="icon-check s16"></i>
+                                </span>
+                                <span class="ms-form-wizard-step-text">Target Audience & Schdule Campaign</span>
+                            </span>
+            </md-tab-label>
+            <md-tab-body>
+
+              <form name="wizardStep3" ms-form-wizard-form novalidate>
+                <div layout="column" layout-gt-xs="row">
+                  <md-input-container class="md-block" flex="100" flex-gt-xs="33">
+                    <md-select placeholder="Select a list from our cutomised user list" ng-model="userType" ng-click="vm.listTypeofUsers($event)" style="min-width: 200px;">
+                      <md-option ng-value="userType" ng-repeat="userType in vm.userType">{{userType.type}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                  </div>
+
+
+                <div layout="column" layout-gt-xs="row" flex="100" flex-gt-xs="33">
+                  <div class="md-block" flex="100" flex-gt-xs="33">
+                    <md-datepicker ng-model="myStartDate" md-placeholder="Start date"></md-datepicker>
+                  </div>
+
+                  <div class="md-block" flex="100" flex-gt-xs="33">
+                    <md-datepicker ng-model="myEndDate" md-placeholder="End date"></md-datepicker>
+                  </div>
+
+                  <md-input-container flex="100" flex-gt-xs="33">
+                    <md-select placeholder="Select a list from our cutomised user list" ng-model="schduleType" ng-click="vm.schdulerDetails($event)" style="min-width: 200px;">
+                      <md-option ng-value="schduleType" ng-repeat="schduleType in vm.schduleType">{{schduleType.type}}</md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </form>
+            </md-tab-body>
+          </md-tab>
+        </md-tabs>
+
+        <div class="navigation" flex layout="row" layout-align="center center">
+          <md-button class="md-raised md-accent" ng-click="msWizard.previousStep()"
+                     ng-disabled="msWizard.isFirstStep()">
+            Previous
+          </md-button>
+          <div class="steps">
+                        <span ng-repeat="form in msWizard.forms"
+                              ng-class="{'selected md-accent-bg':msWizard.selectedIndex === $index}"></span>
+          </div>
+          <md-button class="md-raised md-accent" ng-click="msWizard.nextStep()"
+                     ng-hide="msWizard.isLastStep()"
+                     ng-disabled="msWizard.currentStepInvalid()">
+            Next
+          </md-button>
+          <md-button class="md-raised md-warn" ng-click="vm.sendForm(); msWizard.resetForm();" ng-show="msWizard.isLastStep()"
+                     ng-disabled="msWizard.formsIncomplete()">
+            Send
+          </md-button>
+        </div>
+
+      </ms-form-wizard>
+      <!-- / FORM WIZARD -->
+
+
+    </div>
+      </div>
+    <!-- / CONTENT -->
+
+</div>

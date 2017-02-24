@@ -1,0 +1,70 @@
+<div layout="row" layout-wrap>
+
+    <div class="about" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="65">
+        <div class="profile-box info-box general md-whiteframe-1dp" layout="column">
+            <header class="md-accent-bg">
+                <div class="title" translate="PROFILE.GENERAL_INFORMATION">General Information</div>
+            </header>
+
+            <div class="content">
+                <div class="info-line">
+                    <div class="title">Measured By</div>
+                  <md-select ng-model="vm.personal.measure" placeholder="MeasuredBy" class="md-no-underline">
+                    <md-option value="self">Self</md-option>
+                    <md-option value="hospital">Hospital</md-option>
+                  </md-select>
+                </div>
+
+                <div class="info-line">
+                    <label class="title">Last Measured Date</label>
+                  <md-datepicker ng-model="vm.personal.date" md-placeholder="Date"></md-datepicker>
+                </div>
+
+              <div class="info-line">
+                <div class="title" >Height </div>
+                <input type="text" ng-model="vm.personal.height" placeholder="Height in Cms">
+              </div>
+
+              <div class="info-line">
+                <div class="title" >Weight </div>
+                <input type="text" ng-model="vm.personal.weight" placeholder="Weight in Kgs">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > BMI </div>
+                <input type="text" ng-model="vm.personal.bmi" placeholder="BMI">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > Blood Pressure </div>
+                <input type="text" ng-model="vm.personal.bplower" placeholder="Lower"> /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" ng-model="vm.personal.bpupper" placeholder="Upper">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > Fasting Sugar </div>
+                <input type="text" ng-model="vm.personal.fastingSugar" placeholder="Sugar">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > Post Prandial Sugar </div>
+                <input type="text" ng-model="vm.personal.ppSugar" placeholder=" Post Sugar">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > Random Sugar </div>
+                <input type="text" ng-model="vm.personal.randomSugar" placeholder="Random Sugar">
+              </div>
+
+              <div class="info-line">
+                <div class="title" > HBA1c </div>
+                <input type="text" ng-model="vm.personal.HBA1c" placeholder="HBA1c">
+              </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

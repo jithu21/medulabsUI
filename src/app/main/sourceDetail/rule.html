@@ -1,0 +1,83 @@
+<md-dialog class="task-dialog" aria-label="New Task">
+  <form name="taskForm" class="md-inline-form" novalidate>
+    <md-toolbar class="md-accent md-hue-2">
+      <div class="md-toolbar-tools" layout="row" layout-align="space-between">
+        <span class="title">{{vm.objectname}}</span>
+        <md-button class="md-icon-button" ng-click="vm.closeDialog()">
+          <md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content ms-scroll>
+
+      <div layout-sm="column" layout="row">
+        <div flex class="date-container">
+          <label>Enter Rule Name</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <md-input-container><input type="text" ng-model="vm.RuleName"> </md-input-container>
+        </div>
+
+      </div>
+
+
+
+      <div layout-sm="column" layout="row">
+        <div flex class="date-container">
+          <label>Choose Field</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <md-input-container><md-select ng-model="vm.choosenField" ng-change="vm.selectedField()"  placeholder="Select a Field"><md-option ng-value="opt" ng-repeat="opt in vm.fields">{{ opt }}</md-option></md-select></md-input-container>
+        </div>
+
+      </div>
+
+      <div class="attachment-list" ng-show="vm.text">
+         <label> Rule </label>
+        <div class="attachment"  layout="row" layout-align="space-between center">
+          <div> {{ vm.choosenField }}</div>
+          <md-input-container><md-select ng-model="vm.choosenOption"   placeholder="Select a Option"><md-option ng-value="opt" ng-repeat="opt in vm.options">{{ opt }}</md-option></md-select></md-input-container>
+          <div><md-input-container><input type="text" ng-model="vm.enteredText"  placeholder="Enter the String"></md-input-container></div>
+        </div>
+      </div>
+      <div class="attachment-list" ng-show="vm.number">
+        <label> Rule</label>
+        <div class="attachment" layout="row" layout-align="space-between center">
+          <div> {{ vm.choosenField }}</div>
+          <md-input-container><md-select ng-model="vm.choosenOption"   placeholder="Select a Option"><md-option ng-value="opt" ng-repeat="opt in vm.optionsNumber">{{ opt }}</md-option></md-select></md-input-container>
+          <div><md-input-container><input type="text" ng-model="vm.enteredText"  placeholder="Enter the Number"></md-input-container></div>
+        </div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" layout-align="space-between center">
+      <div layout="row" layout-align="start center">
+        <md-button type="submit" ng-if="!vm.newTask" ng-click="vm.saveTask()"
+                   class="send-button md-accent md-raised"
+                   ng-disabled="taskForm.$invalid || taskForm.$pristine"
+                   aria-label="SAVE" >
+          SAVE
+        </md-button>
+
+        <md-button type="submit" ng-if="vm.newTask" ng-click="vm.addNewTask()"
+                   class="send-button md-accent md-raised"
+                   ng-disabled="taskForm.$invalid || taskForm.$pristine"
+                   aria-label="Add Task">
+          ADD TASK
+        </md-button>
+
+        <!--<md-button class="md-icon-button" aria-label="Attach file">-->
+          <!--<md-icon md-font-icon="icon-paperclip"></md-icon>-->
+        <!--</md-button>-->
+
+        <!--<md-button class="md-icon-button" aria-label="Insert picture">-->
+          <!--<md-icon md-font-icon="icon-file-image-box"></md-icon>-->
+        <!--</md-button>-->
+      </div>
+
+      <div layout="row">
+        <md-button class="md-icon-button" ng-click="vm.deleteTask($event)" aria-label="Delete">
+          <md-icon md-font-icon="icon-delete"></md-icon>
+          <md-tooltip><span >DELETE</span></md-tooltip>
+        </md-button>
+      </div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

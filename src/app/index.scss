@@ -11,3 +11,9 @@
  */
 // injector
 // endinjector
+
+.page-layout.simple.fullwidth > .header{
+  height: 132px;
+  min-height:132px;
+  max-height:132px;
+}

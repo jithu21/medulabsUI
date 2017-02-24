@@ -1,0 +1,26 @@
+<div id="forms" class="page-layout simple fullwidth doc-page" layout="column">
+
+    <!-- HEADER -->
+    <div class="header md-accent-bg" layout="row" layout-align="space-between">
+        <div layout="row" layout-align="space-between center">
+            <div  class="title">Customers</div>
+            <div>&nbsp;</div>
+            <div  style="margin-left: 701px;" class="breadcrumb" layout="row" layout-align="start center">
+              <md-icon md-font-icon="icon-home" class="s16"></md-icon>
+              <md-icon md-font-icon="icon-chevron-right" class="s16 separator"></md-icon>
+              <span class="parent">Connectors</span>
+            </div>
+        </div>
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT -->
+    <div class="content" layout="column">
+      <canvas id="line" class="chart chart-line" chart-data="vm.lineChart.data"
+              chart-labels="vm.lineChart.labels" chart-legend="true" chart-series="vm.lineChart.series">
+      </canvas>
+
+    </div>
+
+
+</div>

@@ -1,15 +1,21 @@
 (function ()
 {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('fuse')
-        .config(config);
+  angular
+    .module('fuse')
+    .config(config);
 
-    /** @ngInject */
-    function config()
-    {
-        // Put your custom configurations here
-    }
+  /** @ngInject */
+  function config(AuthProvider,configUrl)
+  {
+    //AuthProvider.loginPath(configUrl.url+'/users/sign_in');
+    //AuthProvider.loginMethod('POST');
+    //AuthProvider.logoutPath(configUrl.url+'/users/sign_out');
+    //AuthProvider.logoutMethod('DELETE');
+    //AuthProvider.registerPath(configUrl.url+'/users');
+    //AuthProvider.registerMethod('POST');
+    //AuthProvider.resourceName('users');
+  }
 
 })();

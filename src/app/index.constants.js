@@ -1,7 +1,9 @@
 (function ()
 {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('fuse');
+  angular
+    .module('fuse').constant('configUrl', {
+    "url":"http://localhost:3000"
+  });
 })();

@@ -1,0 +1,39 @@
+<div id="profile" class="page-layout simple tabbed">
+
+  <div class="header md-accent-bg" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="space-between end" flex>
+    <div class="user-info" layout="column" layout-align="center center" layout-gt-sm="row" layout-align-gt-sm="start center">
+      <img class="profile-image avatar huge" src="assets/images/avatars/alice.jpg">
+
+      <div class="name">Jithendranath Gupta Y</div>
+    </div>
+
+  </div>
+    <!-- CONTENT -->
+    <div class="content" flex>
+      <md-tabs md-dynamic-height>
+        <md-tab>
+          <md-tab-label>
+            <span>General Information</span>
+          </md-tab-label>
+          <md-tab-body>
+            <md-content class="timeline-tab"
+                        ng-include="'app/main/profile/tabs/timeline/timeline.html'">
+            </md-content>
+          </md-tab-body>
+        </md-tab>
+        <md-tab>
+          <md-tab-label>
+            <span>Basic Health Information</span>
+          </md-tab-label>
+          <md-tab-body>
+            <md-content class="about-tab"
+                        ng-include="'app/main/profile/tabs/about/about.html'">
+            </md-content>
+          </md-tab-body>
+        </md-tab>
+      </md-tabs>
+
+    </div>
+    <!-- / CONTENT -->
+
+</div>

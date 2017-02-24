@@ -1,0 +1,90 @@
+<div layout="row" layout-wrap>
+
+  <div class="about" layout="column" flex="100" flex-gt-sm="50" flex-gt-md="65">
+    <div class="profile-box info-box general md-whiteframe-1dp" layout="column">
+      <header class="md-accent-bg">
+        <div class="title" translate="PROFILE.GENERAL_INFORMATION">General Information</div>
+      </header>
+
+      <div class="content">
+        <div class="info-line">
+          <div class="title" translate="PROFILE.GENDER">Gender</div>
+          <input class="info" type="text" ng-model="vm.about.general.gender" placeholder="Male/Female"></input>
+        </div>
+
+        <div class="info-line">
+          <div class="title" translate="PROFILE.BIRTHDAY">Birthday</div>
+          <input class="info" type="datetime"  ng-model="vm.about.general.birthday"  placeholder="Date (DD/MM/YY)" ></input>
+        </div>
+
+        <div class="info-line">
+          <div class="title" translate="PROFILE.LOCATIONS">Locations</div>
+          <div class="info location" ng-repeat="location in vm.about.general.locations">
+            <span>{{location}}</span>
+            <md-icon md-font-icon="icon-map-marker" class="s16"></md-icon>
+          </div>
+        </div>
+
+        <div class="info-line">
+          <div class="title" translate="PROFILE.ABOUT_ME">About Me</div>
+          <input class="info" type="text" ng-model="vm.about.general.about"></input>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-box info-box work md-whiteframe-1dp" layout="column">
+      <header class="md-accent-bg">
+        <div class="title" translate="PROFILE.WORK">Work</div>
+      </header>
+
+      <div class="content">
+        <div class="info-line">
+          <div class="title" translate="PROFILE.OCCUPATION">Occupation</div>
+          <input type="text" class="info" ng-model="vm.about.work.occupation" placeholder="Occupation"></input>
+        </div>
+
+        <div class="info-line">
+          <div class="title" translate="PROFILE.SKILLS">Skills</div>
+          <input class="info" ng-model="vm.about.work.skills" type="text" placeholder="Skills">
+        </div>
+
+        <div class="info-line">
+          <div class="title" translate="PROFILE.JOBS">Jobs</div>
+          <table class="info jobs">
+            <tr class="job" ng-repeat="job in vm.about.work.jobs">
+              <td class="company">{{job.company}}</td>
+              <td class="date">{{job.date}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-box info-box contact md-whiteframe-1dp" layout="column">
+      <header class="md-accent-bg">
+        <div class="title" translate="PROFILE.CONTACT">Contact</div>
+      </header>
+      <div class="content">
+        <div class="info-line">
+          <div class="title" translate="PROFILE.ADDRESS">Address</div>
+          <input type="text" class="info" ng-model="vm.about.contact.address"></input>
+        </div>
+        <div class="info-line">
+          <div class="title" translate="PROFILE.TEL">Tel.</div>
+          <input class="info"  type = "text" ng-model="vm.about.contact.tel" type="tel"></input>
+        </div>
+        <div class="info-line">
+          <div class="title" translate="PROFILE.WEBSITE">Website</div>
+          <input class="info" ng-model="vm.about.contact.website"  type="text" placeholder="Website Name">
+
+        </div>
+        <div class="info-line">
+          <div class="title" translate="PROFILE.EMAILS">Emails</div>
+          <input class="info" type="email" ng-model="vm.about.contact.email">
+          </input>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
